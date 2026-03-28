@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>Simple HTML Code Editor & Compiler</title>
+
+  <style>
+
+    body {
+
+      margin: 0;
+
+      font-family: Arial, sans-serif;
+
+      display: flex;
+
+      height: 100vh;
+
+    }
+
+
+    #editor-container {
+
+      width: 50%;
+
+      padding: 10px;
+
+      box-sizing: border-box;
+
+      border-right: 1px solid #ccc;
+
+      display: flex;
+
+      flex-direction: column;
+
+    }
+
+
+    #preview-container {
+
+      width: 50%;
+
+      box-sizing: border-box;
+
+    }
+
+
+    #code {
+
+      flex: 1;
+
+      width: 100%;
+
+      resize: none;
+
+      font-family: Consolas, monospace;
+
+      font-size: 14px;
+
+      padding: 8px;
+
+      box-sizing: border-box;
+
+    }
+
+
+    #run-btn {
+
+      margin-top: 8px;
+
+      padding: 6px 10px;
+
+      font-size: 14px;
+
+      cursor: pointer;
+
+    }
+
+
+    iframe {
+
+      width: 100%;
+
+      height: 100%;
+
+      border: none;
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+
+<div id="editor-container">
+
+  <h3>HTML Code Editor</h3>
+
+  <textarea id="code">
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <title>Test Page</title>
+
+  <style>
+
+    body { font-family: Arial; background: #f0f0f0; }
+
+    h1 { color: darkblue; }
+
+  </style>
+
+</head>
+
+<body>
+
+  <h1>Hello from the editor!</h1>
+
+  <p>You can edit this code and click Run.</p>
+
+  <script>
+
+    console.log("JS is running!");
+
+  </script>
+
+</body>
+
+</html>
+
+  </textarea>
+
+  <button id="run-btn">Run ▶</button>
+
+</div>
+
+<br><br>
+
+<h5>&copy;ALL CREDIT ARE GIVEN TO ANDY LU FOR MAKING THE ORIGINAL CODE</h5>
+
+
+<div id="preview-container">
+
+  <iframe id="preview"></iframe>
+
+</div>
+
+
+<script>
+
+  const runBtn = document.getElementById('run-btn');
+
+  const codeArea = document.getElementById('code');
+
+  const previewFrame = document.getElementById('preview');
+
+
+  function runCode() {
+
+    const code = codeArea.value;
+
+    const previewDoc = previewFrame.contentDocument || previewFrame.contentWindow.document;
+
+    previewDoc.open();
+
+    previewDoc.write(code);
+
+    previewDoc.close();
+
+  }
+
+
+  runBtn.addEventListener('click', runCode);
+
+
+  // Optional: run once on load
+
+  window.addEventListener('load', runCode);
+
+</script>
+
+
+</body>
+
+</html>
+
